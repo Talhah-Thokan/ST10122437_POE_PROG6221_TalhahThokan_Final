@@ -1,0 +1,61 @@
+﻿<Window x:Class="ST10122437_POE_PROG6221_TalhahThokan_Final.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Recipe Application" Height="600" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Section for adding a new recipe -->
+        <StackPanel Grid.Row="0" Grid.Column="0" Margin="10">
+            <TextBox x:Name="RecipeNameInput" Text="Recipe Name" Margin="0,0,0,10"/>
+            <TextBlock Text="Ingredients" FontWeight="Bold"/>
+            <ListBox x:Name="IngredientList" Margin="0,0,0,10" Height="100"/>
+            <StackPanel Orientation="Horizontal" Width="370">
+                <TextBox x:Name="IngredientNameInput" Text="Name" Width="100" Margin="0,0,10,0"/>
+                <TextBox x:Name="IngredientQuantityInput" Text="Quantity" Width="50" Margin="0,0,10,0"/>
+                <TextBox x:Name="IngredientUnitInput" Text="Unit" Width="50" Margin="0,0,10,0"/>
+                <TextBox x:Name="IngredientCaloriesInput" Text="Calories" Width="50" Margin="0,0,10,0"/>
+                <TextBox x:Name="IngredientFoodGroupInput" Text="Food Group" Width="100"/>
+                <Button Content="Add Ingredient" Click="AddIngredient_Click" Margin="10,0,0,0"/>
+            </StackPanel>
+            <TextBlock Text="Steps" FontWeight="Bold"/>
+            <ListBox x:Name="StepList" Margin="0,0,0,10" Height="100"/>
+            <TextBox x:Name="StepInput" Text="Step Description" Margin="0,0,0,10" Height="44"/>
+            <Button Content="Add Step" Click="AddStep_Click"/>
+            <Button Content="Save Recipe" Click="SaveRecipe_Click" Margin="0,10,0,0"/>
+        </StackPanel>
+
+        <!-- Section for displaying and managing recipes -->
+        <StackPanel Grid.Row="0" Grid.Column="1" Margin="10">
+            <Button Content="Filter Recipes" Click="FilterRecipes_Click" Margin="0,0,0,10"/>
+            <ListBox x:Name="RecipeList" Margin="0,0,0,10" SelectionChanged="RecipeList_SelectionChanged" Height="100"/>
+            <TextBlock x:Name="RecipeDetails" Text="Recipe Details" FontWeight="Bold" TextWrapping="Wrap"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10,0,0,0" Height="141" Width="372">
+                <TextBox x:Name="ScaleFactorInput" Text="Scale Factor (e.g., 0.5, 2, 3)" Width="105"/>
+                <Button Content="Scale Recipe" Click="ScaleRecipe_Click" Margin="10"/>
+                <Button Content="Reset Quantities" Click="ResetQuantities_Click" Margin="10"/>
+                <Button Content="Clear Recipe" Click="ClearRecipe_Click" Margin="10"/>
+            </StackPanel>
+        </StackPanel>
+
+        <!-- Section for filtering recipes -->
+        <StackPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center">
+            <TextBlock Text="Filter Recipes:" FontWeight="Bold" Margin="0,10,0,5"/>
+            <StackPanel Orientation="Horizontal">
+                <TextBox x:Name="FilterKeywordInput" Width="150" Margin="0,0,10,0" Text="Keyword"/>
+                <CheckBox x:Name="IngredientFilter" Content="Ingredient" Margin="0,0,10,0"/>
+                <CheckBox x:Name="FoodGroupFilter" Content="Food Group" Margin="0,0,10,0"/>
+                <CheckBox x:Name="CaloriesFilter" Content="Max Calories" Margin="0,0,10,0"/>
+                <Button Content="Apply Filter" Click="FilterRecipes_Click"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>
